@@ -1,0 +1,42 @@
+.App {
+
+}
+
+.intro-overlay {
+    background-image: url("/wasteland-wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    width: 412px;
+    padding: 20px
+}
+
+.Home {
+
+}
+
+@keyframes appear {
+    0% {opacity: 0%}
+    90% {opacity: 0%}
+    95% {opacity: 90%}
+    100% {opacity: 100%}
+  }
+
+.intro-1 {
+    animation: appear 1s linear;
+}
+
+.intro-2 {
+    animation: appear 2s linear;
+}
+
+.intro-3 {
+    animation: appear 2.5s linear;
+    color: rgb(171, 10, 10)
+}
+
+.intro-4 {
+    animation: appear 4s linear;
+}

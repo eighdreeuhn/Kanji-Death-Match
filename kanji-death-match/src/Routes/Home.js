@@ -7,6 +7,15 @@ const Home = () => {
 
     return (
         <div className="Home">
+            <header>
+                <nav>
+                    <ul>
+                        <li>
+                            
+                        </li>
+                    </ul>
+                </nav>
+            </header>
             <div>
                 <Link to="/home/kanji">Kanji</Link>
             </div>
