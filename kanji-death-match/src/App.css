@@ -18,13 +18,16 @@
 }
 
 .Home {
+    display: grid;
+    grid-template: 100px auto / 100px auto 100px;;
     background-image: url("/j-lee-LYBSBjGo-5s-unsplash.jpg");
     background-repeat: no-repeat;
     background-size: auto;
 }
 
 header {
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
     justify-content: flex-start;
 }
 
