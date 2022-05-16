@@ -28,7 +28,10 @@ const Home = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            setKanji(data);
+            let kanjiCopy = [...kanji];
+            data.forEach((entry) => {
+                kanjiCopy.push(entry)});
+            setKanji(kanjiCopy);
             setSearchInfo("")
         })
         .catch(err => console.error(err));  
