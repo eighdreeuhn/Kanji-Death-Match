@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import KanjiCard from '../Components/KanjiCard';
 import KanjiMain from "./KanjiMain";
+import About from './About';
 
 
 const Home = () => {
@@ -57,25 +58,26 @@ const Home = () => {
                 <h1>Kanji Deathmatch</h1>
                 <nav>
                     <ul>
-                        <li>About</li>
+                        <Link to="/about"><li>About</li></Link>
+                        <Link to="/KanjiMain"><li>Main</li></Link>
                     </ul>
                 </nav>
             </header>
-            <div className="search-form">
-               <form onSubmit={handleSubmit}>
-                   <label></label>
-                   <input onChange={handleChange} value={searchInfo} type="text" placeholder="Type some stuff..."></input>
-                   <button type="submit">Kanji-fy!</button>
-               </form>
-            </div>
-            <section className="kanjiCardDisplay">
+              <main className="main-display">
+                  <div className="search-form">
+                    <form onSubmit={handleSubmit} >
+                        <input onChange={handleChange} value={searchInfo} type="text" placeholder="Type some stuff..."></input>
+                        <button type="submit">Kanji-fy!</button>
+                    </form>
+                </div>
+                <div className="kanjiCardDisplay">
                 {kanjiCards}
-            </section>
-            <div>
+                </div>
+            </main>
                 <Routes>
-                    <Route path="/kanji" element={<KanjiMain />} />
+                    <Route path="/kanji" element={<KanjiMain />}/>
+                    <Route path="/about" element={<About/>}/> 
                 </Routes>
-            </div>
         </div>
     )
 }

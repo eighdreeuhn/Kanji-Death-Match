@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Home from './Routes/Home';
+import About from './Routes/About';
 import KanjiMain from './Routes/KanjiMain'
-
 import './App.css';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />}>
               <Route path="/home/kanji" element={<KanjiMain/>}/>
+              <Route path="/home/about" element={<About/>}/> 
             </Route>
           </Routes>
     </div>
