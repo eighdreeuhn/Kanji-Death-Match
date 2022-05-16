@@ -38,10 +38,25 @@ const Home = () => {
         .catch(err => console.error(err));  
     }
 
+    const handleKanjiClick = (e) => {
+        let activeKanji = document.getElementsByClassName("zoom-in")[0];
+        if (activeKanji) {
+          if (e.target === activeKanji) {
+            e.target.classList.toggle("zoom-out");
+            setTimeout(() => e.target.classList.toggle("zoom-out"), 500);
+          } else {
+            activeKanji.classList.toggle("zoom-in");
+            activeKanji.classList.toggle("zoom-out");
+            setTimeout(() => activeKanji.classList.toggle("zoom-out"), 500);
+          } 
+        } 
+        e.target.classList.toggle("zoom-in");
+    }
+
         const kanjiCards = kanji.map((symbol, index) => {
             if (kanji) {
                 return(
-                    <KanjiCard kanji={symbol} key={index}/>
+                    <KanjiCard kanji={symbol} onClick={handleKanjiClick} key={index}/>
                 )
             } else {
                 return (
