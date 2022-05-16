@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
+import KanjiCard from '../Components/KanjiCard';
 import KanjiMain from "./KanjiMain";
 
 
@@ -33,6 +34,20 @@ const Home = () => {
         .catch(err => console.error(err));  
     }
 
+        const kanjiCards = kanji.map((symbol, index) => {
+            if (kanji) {
+                return(
+                    <KanjiCard kanji={symbol} key={index}/>
+                )
+            } else {
+                return (
+                    <div className="kanji-card">
+                        <h1>Loading...</h1>
+                    </div>
+                )
+            }
+            })
+
     return (
         <div className="Home">
             <header>
@@ -50,6 +65,9 @@ const Home = () => {
                    <button type="submit">Kanji-fy!</button>
                </form>
             </div>
+            <section className="kanjiCardDisplay">
+                {kanjiCards}
+            </section>
             <div>
                 <Routes>
                     <Route path="/kanji" element={<KanjiMain />} />
