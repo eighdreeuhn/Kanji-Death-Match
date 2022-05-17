@@ -63,7 +63,6 @@ const Home = () => {
         console.log(video);
         video[0] ? video[0].load() : video = [];
         setSelected(kanji.filter(k => k.kanji.character === e.target.innerText));
-        console.log(selected)
         let activeKanji = document.getElementsByClassName("zoom-in")[0];
         if (activeKanji) {
             if (e.target === activeKanji) {
@@ -77,11 +76,29 @@ const Home = () => {
         }
         e.target.classList.toggle("zoom-in");
     }
+    console.log("selected", selected)
+
+    const fIgHt = () => {
+        let fightReady = document.getElementsByClassName("fight-button");
+        console.log(!fightReady[0], player1, player2)
+        if (player1[0] && player2[0]) {
+           const fightButton = document.createElement("button");
+           fightButton.className = "fight-button";
+           fightButton.innerText = "FIGHT!!!";
+           fightButton.style.backgroundColor= "red"
+           let detailCard = document.getElementsByClassName("kanji-details")[0];
+           detailCard.appendChild(fightButton);
+           console.log(fightButton, detailCard);
+        }
+
+    }
 
     const handleSetPlayer= (e) => {
-       let playerNumber = e.target.className.slice(7);
-       console.log(playerNumber);
+       let playerNumber = parseInt(e.target.className.slice(7));
+       playerNumber === 1 ? setPlayer1(selected) : setPlayer2(selected);
+       fIgHt();
     }
+    console.log(player1, player2)
 
     const kanjiCards =  kanji.map((symbol, index) => {
         if (kanji) {
@@ -100,7 +117,7 @@ const Home = () => {
             <header>
                 <Link to="/"><h1>KDM</h1></Link>
                 <Link to="/about"><p>About</p></Link>
-                <Link to="/home"><p>Home</p></Link>
+                <Link to="/home" onClick={() => setKanji([])}><p>Home</p></Link>
             </header>
             <main className="main-display">
                 <div className="greeting">

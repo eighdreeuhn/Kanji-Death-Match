@@ -11,7 +11,7 @@ const KanjiDetails = (props) => {
                 <p>Stroke count: {props.kanji[0].kanji.strokes.count}</p>
                 <p>Radical: {props.kanji[0].radical.character}</p>
                 <p>Radical meaning: {props.kanji[0].radical.meaning.english}</p>
-                <button className="button-1" onClick={props.onClick}>Set Player 1</button>
+                <button className="button-1" name={props.kanji[0].kanji.character} onClick={props.onClick}>Set Player 1</button>
                 <button className="button-2" onClick={props.onClick}>Set Player 2</button>
             </div>
             <video className="strokeVideo" autoPlay name="media">
