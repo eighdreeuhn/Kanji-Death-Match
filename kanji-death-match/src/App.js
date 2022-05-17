@@ -5,6 +5,7 @@ import Footer from './Components/Footer';
 import Home from './Routes/Home';
 import About from './Routes/About';
 import KanjiDetails from './Components/KanjiDetails';
+import Error from './Components/Error';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/home" element={<Home />}/>
             <Route path="/home/kanji" element={<KanjiDetails/>}/>
             <Route path="/about" element={<About/>}/>
+            <Route path="*" element={<Error/>}/>
           </Routes>
         <Footer/>
     </div>
