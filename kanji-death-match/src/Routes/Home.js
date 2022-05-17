@@ -57,6 +57,9 @@ const Home = () => {
     }
 
     const handleKanjiClick = (e) => {
+        let video = document.getElementsByClassName("strokeVideo");
+        console.log(video);
+        video ? video[0].load() : video = [];
         setSelected(kanji.filter(k => k.kanji.character === e.target.innerText));
         console.log(selected)
         let activeKanji = document.getElementsByClassName("zoom-in")[0];
@@ -72,13 +75,13 @@ const Home = () => {
         }
         e.target.classList.toggle("zoom-in");
     }
+
     const kanjiCards =  kanji.map((symbol, index) => {
             return (
                 <Link to={symbol.kanji.character}><KanjiCard kanji={symbol} index={index} onClick={handleKanjiClick} key={index} /></Link>
             )
         })
     
-
     return (
         <div className="Home">
             <header>
