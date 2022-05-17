@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import KanjiCard from '../Components/KanjiCard';
 import KanjiDetails from '../Components/KanjiDetails';
 import About from './About';
@@ -8,8 +8,10 @@ import Fight from './Fight';
 const Home = () => {
 
     const [kanji, setKanji] = useState([]);
-    const [searchInfo, setSearchInfo] = useState("")
-    const [selected, setSelected] = useState([])
+    const [searchInfo, setSearchInfo] = useState("");
+    const [selected, setSelected] = useState([]);
+    const [player1, setPlayer1] =useState([]);
+    const [player2, setPlayer2] =useState([]);
 
     const options = {
         method: 'GET',
@@ -59,7 +61,7 @@ const Home = () => {
     const handleKanjiClick = (e) => {
         let video = document.getElementsByClassName("strokeVideo");
         console.log(video);
-        video ? video[0].load() : video = [];
+        video[0] ? video[0].load() : video = [];
         setSelected(kanji.filter(k => k.kanji.character === e.target.innerText));
         console.log(selected)
         let activeKanji = document.getElementsByClassName("zoom-in")[0];
@@ -76,10 +78,21 @@ const Home = () => {
         e.target.classList.toggle("zoom-in");
     }
 
+    const handleSetPlayer= (e) => {
+       let playerNumber = e.target.className.slice(7);
+       console.log(playerNumber);
+    }
+
     const kanjiCards =  kanji.map((symbol, index) => {
+        if (kanji) {
             return (
                 <Link to={symbol.kanji.character}><KanjiCard kanji={symbol} index={index} onClick={handleKanjiClick} key={index} /></Link>
             )
+        } else {
+            return (
+                <div>No such kanji...</div>
+            )
+        }
         })
     
     return (
@@ -87,6 +100,7 @@ const Home = () => {
             <header>
                 <Link to="/"><h1>KDM</h1></Link>
                 <Link to="/about"><p>About</p></Link>
+                <Link to="/home"><p>Home</p></Link>
             </header>
             <main className="main-display">
                 <div className="greeting">
@@ -106,7 +120,7 @@ const Home = () => {
                     {kanjiCards}
                 </div>
                 <Routes>
-                    <Route path=":kanji" element={<KanjiDetails kanji={selected}/>} />
+                    <Route path=":kanji" element={<KanjiDetails kanji={selected} onClick={handleSetPlayer}/>} />
                     <Route path="/about" element={<About/>} />
                     <Route path="/fight" element={<Fight/>} />
                 </Routes>
