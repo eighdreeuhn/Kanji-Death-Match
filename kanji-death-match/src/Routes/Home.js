@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import KanjiCard from '../Components/KanjiCard';
-import KanjiDetails from "./KanjiDetails";
+import KanjiDetails from '../Components/KanjiDetails';
 import About from './About';
-
-const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com',
-      'X-RapidAPI-Key': '58f5ec4060msh8e547825688a507p19b380jsn8306895f50db'
-    }
-  };
+import Fight from './Fight';
 
 const Home = () => {
-
+    
     const [kanji, setKanji] = useState([]);
     const [searchInfo, setSearchInfo] = useState("")
-
+    const [selected, setSelected] = useState([])
+    
+    const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com',
+          'X-RapidAPI-Key': '58f5ec4060msh8e547825688a507p19b380jsn8306895f50db'
+        }
+      };
+      
     const handleChange = (e) => {
         setSearchInfo(e.target.value)
     }
@@ -33,8 +35,7 @@ const Home = () => {
                 console.log(data);
                 kanjiCopy.push(data);})
                 setKanji(kanjiCopy);
-                console.log(kanjiCopy)
-        })
+            })
     }
 
     const handleSubmit = (e) => {
@@ -54,6 +55,7 @@ const Home = () => {
     }
 
     const handleKanjiClick = (e) => {
+        // let character = 
         let activeKanji = document.getElementsByClassName("zoom-in")[0];
         if (activeKanji) {
           if (e.target === activeKanji) {
@@ -71,24 +73,25 @@ const Home = () => {
     const kanjiCards = kanji.map((symbol, index) => {
         if (kanji) {
             return(
-                <KanjiCard kanji={symbol} onClick={handleKanjiClick} key={index}/>
-            )
-        } else {
-            return (
-                <div className="kanji-card">
+                <Link to="/home/kanji"><KanjiCard kanji={symbol} onClick={handleKanjiClick} key={index}/></Link>
+                )
+            } else {
+                return (
+                    <div className="kanji-card">
                     <h1>Loading...</h1>
-                </div>
-            )
-        }
+                    </div>
+                    )
+            }
     })
-
+        
     return (
         <div className="Home">
             <header>
                 <Link to="/"><h1>KDM</h1></Link>
-                <Link to="/home/about"/>
+                <Link to="/about"><p>About</p></Link>
             </header>
               <main className="main-display">
+              <div><h2>Welcome to Kanji Deathmatch! Enter an English word to get a kanji.</h2></div>
                   <div className="search-form">
                     <form onSubmit={handleSubmit} >
                         <input onChange={handleChange} value={searchInfo} type="text" placeholder="Type some stuff..."></input>
@@ -97,10 +100,14 @@ const Home = () => {
                 </div>
                 <div className="kanjiCardDisplay">
                 {kanjiCards}
+                <div className="kanji-details">
+                    <KanjiDetails />
+                </div>
                 </div>
                 <Routes>
-                    <Route path="/kanji" element={<KanjiDetails/>}/>
                     <Route path="/about" element={<About/>}/>
+                    <Route path="home/kanji" element={<KanjiDetails/>}/>
+                    <Route path="/fight" element={<Fight/>}/>
                 </Routes>
             </main>
         </div>

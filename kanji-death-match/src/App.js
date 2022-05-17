@@ -4,7 +4,7 @@ import Intro from './Components/Intro';
 import Footer from './Components/Footer';
 import Home from './Routes/Home';
 import About from './Routes/About';
-import KanjiMain from './Routes/KanjiDetails'
+import KanjiDetails from './Components/KanjiDetails';
 import './App.css';
 
 function App() {
@@ -12,11 +12,10 @@ function App() {
   return (
     <div className="App ">
           <Routes>
-            <Route path="/" element={<Intro/>}/>
-            <Route path="/home" element={<Home />}>
-              <Route path="/home/kanji" element={<KanjiMain/>}/>
-              <Route path="/home/about" element={<About/>}/>
-            </Route>
+            <Route index element={<Intro/>}/>
+            <Route path="/home" element={<Home />}/>
+            <Route path="/home/kanji" element={<KanjiDetails/>}/>
+            <Route path="/about" element={<About/>}/>
           </Routes>
         <Footer/>
     </div>

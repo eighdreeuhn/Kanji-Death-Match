@@ -11,6 +11,6 @@ const root = createRoot(container);
 root.render(
 
   <Router>
-    <App path="/"/>
+    <App/>
   </Router>,)
 
