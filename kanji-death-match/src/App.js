@@ -6,6 +6,7 @@ import Home from './Routes/Home';
 import About from './Routes/About';
 import KanjiDetails from './Components/KanjiDetails';
 import Error from './Components/Error';
+import Fight from './Routes/Fight';
 import './App.css';
 
 function App() {
@@ -14,9 +15,12 @@ function App() {
     <div className="App ">
           <Routes>
             <Route index element={<Intro/>}/>
-            <Route path="/home" element={<Home />}/>
-            <Route path="/home/kanji" element={<KanjiDetails/>}/>
+            <Route path="/home" element={<Home/>}>
+              <Route path="/home/:kanji" element={<KanjiDetails/>}/>
+              {/* <Route path=":kanji" element={<KanjiDetails/>} /> */}
+            </Route>
             <Route path="/about" element={<About/>}/>
+            <Route path="fight" element={<Fight/>}/>
             <Route path="*" element={<Error/>}/>
           </Routes>
         <Footer/>

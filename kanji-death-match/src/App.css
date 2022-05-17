@@ -13,7 +13,7 @@
     background-image: url("/j-lee-LYBSBjGo-5s-unsplash.jpg");
     background-size: contain;
     min-height: 1000px;
-    animation: appear 1s linear;
+    animation: appear 500ms linear;
 }
 
 .about {
@@ -62,10 +62,8 @@ padding: 1em;
 }
 
 header {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-row: 1 / 2;
-    grid-column: 1 / 4;
+    display: flex;
+    justify-content: space-around;
     background-color: black;
     opacity: 75%;
     color: white;
@@ -73,21 +71,21 @@ header {
     width: 100%;
 }
 
-header h1 {
-    grid-column: 1;
+header a {
+    text-decoration: none;
     opacity: 100%;
+    color: white;
 }
 nav {
-    grid-column: 2;
+    list-style: none;
 }
 
 .main-display {
-    width: 100%;
-    height: 100%;
+    display: grid;
+    grid-template-rows: 2fr auto;
 }
 
 .search-form {
-    background-color: black;
     opacity: 75%;
     height: 75px;
     width: 35%;
@@ -96,46 +94,52 @@ nav {
 }
 
 .kanji-card-display {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
 }
 
 .kanji-card{
-    display: flexbox;
-    grid-column: 1 / 2;
+    display: grid;
+    grid-row: 2 / 3;
     text-align: center;
+    color: black;
     border: 2px solid black;
-    font-size: 50px;
+    font-size: 60px;
     background-color: blanchedalmond;
-    color: red;
     margin: 5% 5% 5% 20%;
     height: 100px;
     width: 90px;
     cursor: pointer;
   }
 
+ a {
+    text-decoration: none;
+  }
   .kanji-details {
-      display: flex;
-      grid-column: 2 / 3;
+      display: block;
+      background-color: blanchedalmond;
+      border: 2px solid black;
+      margin: 0 10% 10% 10%;
   }
 
   @keyframes zoom-in {
-    0% {transform: scale(100%)}
-    15% {transform: scale(80%)}
-    100%{transform: scale(200%)}
+      0%{transform: scale(100%)}
+    10% {transform: scale(80%)}
+    100%{transform: scale(150%)}
   }
 
   .zoom-in {
     animation: zoom-in 500ms ease;
-    transform: scale(200%);
+    transform: scale(150%);
+    font-weight: bold;
   }
 
   @keyframes zoom-out {
-    0% {transform: scale(200%)}
+    0% {transform: scale(150%)}
     100%{transform: scale(100%)}
   }
 
   .zoom-out {
     animation: zoom-out 500ms ease;
     transform: scale(100%);
+    font-weight: normal;
   }
