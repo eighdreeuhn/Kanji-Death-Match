@@ -20,9 +20,25 @@
     color: white;
     text-align: center;
     padding: 1em;
+    height: 100%;
+    animation: appear 1s ease;
 }
 
-.Fight {
+.Dojo {
+    background-image: url("../Dojo Background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    animation: appear 500ms linear;
+}
+
+.battleStats {
+    display: flex;
+    justify-content: space-around;
+    height: 5em;
+    background-color: black;
+    opacity: 75%;
+    color: red;
 
 }
 
