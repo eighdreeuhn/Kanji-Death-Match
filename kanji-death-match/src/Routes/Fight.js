@@ -18,21 +18,47 @@ const Fight = (props) => {
           setPlayer1Hp(p1.kanji.strokes.count * p1.radical.strokes + 200);
           setPlayer2Hp(p2.kanji.strokes.count * p2.radical.strokes + 200);
       }, [])
-    
-    const handleWin = () => {
-        console.log("Win");
+    //Executes when one fighter's hp reaches 0
+    const handleWin = (winner) => {
+        const kanji1 = document.getElementsByClassName("kanji-1")[0];
+        const kanji2 = document.getElementsByClassName("kanji-2")[0];
+        switch (winner) {
+            case 1 :
+                kanji1.classList.toggle("winner")
+                kanji2.classList.toggle("loser")
+                break;
+            case 2 :
+                kanji2.classList.toggle("winner")
+                kanji1.classList.toggle("loser")
+                break;
+        }
     }
     
     const handleBattle = () => {
         console.log("round 1")
+        const kanji1 = document.getElementsByClassName("kanji-1")[0];
+        const kanji2 = document.getElementsByClassName("kanji-2")[0];
         let round = 1
-        console.log(player1Hp, player2Hp)
+        console.log(kanji1, kanji2)
         let p1HpCopy = player1Hp;
         let p2HpCopy = player2Hp;
         let interval = setInterval(() => {
           if (p1HpCopy > 0 && p2HpCopy > 0) {
-            const rngAttack = Math.floor(Math.random() * p1.attackPower)
-            round % 2 === 0 ? p1HpCopy -= rngAttack : p2HpCopy -= rngAttack;
+            const rngAttack = Math.floor(Math.random() * p1.attackPower);
+            kanji1.className = "kanji-1";
+            kanji2.className = "kanji-2";
+            switch (round % 2 === 0) {
+                case true :
+                    p2HpCopy -= rngAttack;
+                    kanji1.classList.toggle("attack")
+                    kanji2.classList.toggle("defend")
+                    break;
+                case false :
+                    p1HpCopy -= rngAttack;
+                    kanji2.classList.toggle("attack")
+                    kanji1.classList.toggle("defend")
+                    break;
+            }
             p1HpCopy < 0 ? setPlayer1Hp(0) : setPlayer1Hp(p1HpCopy);
             p2HpCopy < 0 ? setPlayer2Hp(0) : setPlayer2Hp(p2HpCopy);
             round++
@@ -44,7 +70,7 @@ const Fight = (props) => {
                     handleWin(2);
                 }
             }
-        }, 1000);
+        }, 3000);
     }
 
     return (

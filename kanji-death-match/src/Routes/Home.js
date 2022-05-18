@@ -52,6 +52,9 @@ const Home = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                const status = document.getElementsByClassName("status")[0];
+                data.length === 0 ? status.innerText = "No such kanji..." : status.innerText = "Kanji located!"
+                console.log(status)
                 data.forEach((entry) => {
                     kanjiContainer.push(entry.kanji.character)
                 });
@@ -95,7 +98,7 @@ const Home = () => {
         playerNumber === 1 ? setPlayer1(selected[0]) : setPlayer2(selected[0]);
         console.log("players after add ", player1, player2)
     }
-
+    
     let kanjiCards = kanji.map((symbol, index) => {
         if (kanji[0]) {
             return (
@@ -130,7 +133,7 @@ const Home = () => {
                 </div>
                 <div className="game-message">
                     <h3>Player 1: {player1.kanji ? player1.kanji.character : ""}</h3>
-                    {player1.kanji && player2.kanji ? <Link to={`${player1.kanji.character}vs${player2.kanji.character}`}><FightButton /></Link> : null}
+                    {player1.kanji && player2.kanji ? <Link to={`${player1.kanji.character}vs${player2.kanji.character}`}><FightButton /></Link> : <h3 className="status">...</h3>}
                     <h3>Player 2: {player2.kanji ? player2.kanji.character : ""}</h3>
                 </div>
                 <div className="kanjiCardDisplay">

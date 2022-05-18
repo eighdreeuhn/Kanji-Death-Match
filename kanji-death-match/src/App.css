@@ -169,23 +169,53 @@ a {
 }
 
 @keyframes attack {
+    0% {transform: scale(0%)}
+    50% {transform: rotate(180deg)}
+    80% {transform: scale(200%)}
+    100% {transform: rotate(360deg)}
+}
+
+.attack {
+
+    animation: attack 1s ease;
+}
+
+
+@keyframes defend {
+    0% {transform: scale(100%)}
+    25% {transform: scale(25%)}
+    50% {transform: scale(50%)}
+    75% {transform: scale(25%)}
+    100% {transform: scale()100%}
+}
+
+.defend {
+
+    animation: defend 1s ease;
+}
+
+@keyframes winner {
     0% {}
     100% {}
 }
 
-@keyframes defend {
+.winner {
+    animation: winner 1s ease;
+}
+
+@keyframes loser {
     0% {}
     100% {}
+}
+
+.loser {
+    animation: loser 1s ease;
 }
 
 .kanji-1 {
     display: flexbox;
     grid-area: 3 / 2 / 4 / 3;
 }
-
-/* .kanji-1 img {
-    width: auto;
-} */
 
 .kanji-2 {
     display: flexbox;
@@ -197,7 +227,7 @@ a {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     text-align: center;
-    height: 450px;
+    height: auto;
     background-color: blanchedalmond;
     border: 2px solid black;
     margin: 3% 10% 10% 10%;
