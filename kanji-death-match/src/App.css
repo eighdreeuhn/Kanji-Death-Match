@@ -26,12 +26,17 @@
 
 .Dojo {
     display: grid;
-    grid-template: auto 600px / 200px 1fr 1fr 1fr 200px;
+    grid-template: auto 200px 2fr 1fr/ 100px 1fr 1fr 100px;
     background-image: url("../Dojo Background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 600px;
     animation: appear 500ms linear;
+}
+
+.stage {
+    display: grid;
+    grid-area: 2 / 1 / 5 / 6;
 }
 
 .battleStats {
@@ -42,8 +47,9 @@
     background-color: black;
     opacity: 75%;
     color: red;
-
 }
+
+
 
 @keyframes appear {
     0% {
@@ -160,6 +166,30 @@ nav {
 
 a {
     text-decoration: none;
+}
+
+@keyframes attack {
+    0% {}
+    100% {}
+}
+
+@keyframes defend {
+    0% {}
+    100% {}
+}
+
+.kanji-1 {
+    display: flexbox;
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+/* .kanji-1 img {
+    width: auto;
+} */
+
+.kanji-2 {
+    display: flexbox;
+    grid-area: 3 / 3 / 4 / 4;
 }
 
 .kanji-details {

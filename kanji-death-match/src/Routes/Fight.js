@@ -54,9 +54,13 @@ const Fight = (props) => {
                 <button className="start" onClick={() => setTimeout(handleBattle, 1000)}>FIGHT!!!</button>
                 <div className="player-2-hp"><h1>{player2Hp}</h1></div>
             </header>
-            <section className="battle-stats">
-                <div></div>
-                <div></div>
+            <section className="stage">
+                <div className="kanji-1">
+                    <img src={p1.kanji.video.poster} />
+                </div>
+                <div className="kanji-2">
+                    <img src={p2.kanji.video.poster}/>
+                </div>
             </section>
         </div>
     )
