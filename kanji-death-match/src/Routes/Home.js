@@ -3,6 +3,7 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import KanjiCard from '../Components/KanjiCard';
 import KanjiDetails from '../Components/KanjiDetails';
 import About from './About';
+import FightButton from '../Components/FightButton';
 import Fight from './Fight';
 
 const Home = () => {
@@ -10,8 +11,8 @@ const Home = () => {
     const [kanji, setKanji] = useState([]);
     const [searchInfo, setSearchInfo] = useState("");
     const [selected, setSelected] = useState([]);
-    const [player1, setPlayer1] =useState([]);
-    const [player2, setPlayer2] =useState([]);
+    const [player1, setPlayer1] = useState([]);
+    const [player2, setPlayer2] = useState([]);
 
     const options = {
         method: 'GET',
@@ -78,40 +79,41 @@ const Home = () => {
     }
     console.log("selected", selected)
 
+    const handleBattle = () => {
+      console.log("here")
+        // <Link to="/fight" />)
+    }
+
     const fIgHt = () => {
         let fightReady = document.getElementsByClassName("fight-button");
-        console.log(!fightReady[0], player1, player2)
-        if (player1[0] && player2[0]) {
-           const fightButton = document.createElement("button");
-           fightButton.className = "fight-button";
-           fightButton.innerText = "FIGHT!!!";
-           fightButton.style.backgroundColor= "red"
-           let detailCard = document.getElementsByClassName("kanji-details")[0];
-           detailCard.appendChild(fightButton);
-           console.log(fightButton, detailCard);
+        console.log("fight ready? ", fightReady[0], player1, player2)
+        if (player1.kanji && player2.kanji && !fightReady[0]) {
+           let message = document.getElementsByClassName("game-message")[0];
+           message.firstChild.after(<FightButton/>);
+           console.log(message);
         }
-
     }
-
+    
     const handleSetPlayer= (e) => {
-       let playerNumber = parseInt(e.target.className.slice(7));
-       playerNumber === 1 ? setPlayer1(selected) : setPlayer2(selected);
-       fIgHt();
+        let playerNumber = parseInt(e.target.className.slice(7));
+        playerNumber === 1 ? setPlayer1(selected[0]) : setPlayer2(selected[0]);
+        console.log("players after add ", player1, player2)
     }
-    console.log(player1, player2)
+    useEffect(fIgHt, [player1, player2])
 
-    const kanjiCards =  kanji.map((symbol, index) => {
-        if (kanji) {
+    
+    let kanjiCards = kanji.map((symbol, index) => {
+        if (kanji[0]) {
             return (
                 <Link to={symbol.kanji.character}><KanjiCard kanji={symbol} index={index} onClick={handleKanjiClick} key={index} /></Link>
             )
         } else {
             return (
-                <div>No such kanji...</div>
+                <div key={index} >loading...</div>
             )
         }
         })
-    
+
     return (
         <div className="Home">
             <header>
@@ -128,18 +130,26 @@ const Home = () => {
                         enter the arena and watch them fight!
                     </h3></div>
                 <div className="search-form">
+                    <label>
+                        {kanji.length < 10 ? `Build your Kanji Army!` : `Time to fight!`}
+                    </label>
                     <form onSubmit={handleSubmit} >
                         <input onChange={handleChange} value={searchInfo} type="text" placeholder="Type some stuff..."></input>
                         <button type="submit">Kanji-fy!</button>
                     </form>
                 </div>
+                <div className="game-message">
+                            <h3>Player 1: {player1.kanji ? player1.kanji.character : ""}</h3>
+                            {player1.kanji && player2.kanji ? <FightButton fighters={[player1, player2]}/> : null}
+                            <h3>Player 2: {player2.kanji ? player2.kanji.character : ""}</h3>
+                        </div>
                 <div className="kanjiCardDisplay">
                     {kanjiCards}
                 </div>
                 <Routes>
-                    <Route path=":kanji" element={<KanjiDetails kanji={selected} onClick={handleSetPlayer}/>} />
+                    <Route path=":kanji" element={<KanjiDetails key={selected} kanji={selected} onClick={handleSetPlayer}/>} />
                     <Route path="/about" element={<About/>} />
-                    <Route path="/fight" element={<Fight/>} />
+                    <Route path="/fight" element={<Fight fighters={[player1, player2]}/>} />
                 </Routes>
             </main>
         </div>

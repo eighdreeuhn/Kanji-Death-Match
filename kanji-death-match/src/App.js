@@ -15,12 +15,12 @@ function App() {
     <div className="App ">
           <Routes>
             <Route index element={<Intro/>}/>
-            <Route path="/home" element={<Home/>}>
-              <Route path="/home/:kanji" element={<KanjiDetails/>}/>
+            <Route path="/home/*" element={<Home/>}>
+              <Route path=":kanji" element={<KanjiDetails/>}/>
               {/* <Route path=":kanji" element={<KanjiDetails/>} /> */}
             </Route>
             <Route path="/about" element={<About/>}/>
-            <Route path="fight" element={<Fight/>}/>
+            <Route path="/fight" element={<Fight/>}/>
             <Route path="*" element={<Error/>}/>
           </Routes>
         <Footer/>

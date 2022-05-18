@@ -17,17 +17,28 @@
 }
 
 .about {
-color: white;
-text-align: center;
-padding: 1em;
+    color: white;
+    text-align: center;
+    padding: 1em;
 }
 
 @keyframes appear {
-    0% {opacity: 0%}
-    90% {opacity: 0%}
-    95% {opacity: 90%}
-    100% {opacity: 100%}
-  }
+    0% {
+        opacity: 0%
+    }
+
+    90% {
+        opacity: 0%
+    }
+
+    95% {
+        opacity: 90%
+    }
+
+    100% {
+        opacity: 100%
+    }
+}
 
 .intro-1 {
     animation: appear 1s linear;
@@ -76,6 +87,7 @@ header a {
     opacity: 100%;
     color: white;
 }
+
 nav {
     list-style: none;
 }
@@ -91,12 +103,18 @@ nav {
 
 .search-form {
     display: flex;
-    justify-items: center;
+    justify-content: space-evenly;
     opacity: 75%;
-    height: 75px;
     width: 100%;
-    margin: 5%;
     border: 5px, solid blanchedalmond;
+}
+
+.game-message {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%px;
+    margin-left: 20px;
+    text-align: center;
 }
 
 .kanji-card-display {
@@ -104,7 +122,7 @@ nav {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.kanji-card{
+.kanji-card {
     display: inline-block;
     text-align: center;
     color: black;
@@ -115,21 +133,23 @@ nav {
     height: 100px;
     width: 90px;
     cursor: pointer;
-  }
+}
 
- a {
+a {
     text-decoration: none;
-  }
-  .kanji-details {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-content: center;
-      text-align: center;
-      height: 400px;
-      background-color: blanchedalmond;
-      border: 2px solid black;
-      margin: 3% 10% 10% 10%;
-  }
+}
+
+.kanji-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    text-align: center;
+    height: 400px;
+    background-color: blanchedalmond;
+    border: 2px solid black;
+    margin: 3% 10% 10% 10%;
+}
+
 .kanji-details .button-1 {
     margin: 5%;
     background-color: rgb(248, 151, 248);
@@ -140,25 +160,44 @@ nav {
     background-color: rgb(239, 238, 138);
 }
 
-  @keyframes zoom-in {
-      0%{transform: scale(100%)}
-    10% {transform: scale(80%)}
-    100%{transform: scale(150%)}
-  }
+.fight-button {
+    background-color: red;
+    font-size: 1.5em;
+    margin: .5em 0;
+}
 
-  .zoom-in {
+@keyframes zoom-in {
+    0% {
+        transform: scale(100%)
+    }
+
+    10% {
+        transform: scale(80%)
+    }
+
+    100% {
+        transform: scale(150%)
+    }
+}
+
+.zoom-in {
     animation: zoom-in 500ms ease;
     transform: scale(150%);
     font-weight: bold;
-  }
+}
 
-  @keyframes zoom-out {
-    0% {transform: scale(150%)}
-    100%{transform: scale(100%)}
-  }
+@keyframes zoom-out {
+    0% {
+        transform: scale(150%)
+    }
 
-  .zoom-out {
+    100% {
+        transform: scale(100%)
+    }
+}
+
+.zoom-out {
     animation: zoom-out 500ms ease;
     transform: scale(100%);
     font-weight: normal;
-  }
+}
