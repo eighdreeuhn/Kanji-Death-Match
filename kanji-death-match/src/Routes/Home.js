@@ -137,7 +137,7 @@ const Home = () => {
                     {kanjiCards}
                 </div>
                 <Routes>
-                    <Route path="/:fight" element={<Fight fighters={[player1, player2]} />} />
+                    <Route path="/:fight" element={<Fight clearKanji={setKanji} fighters={[player1, player2]} />} />
                     <Route path="/kanji/:kanji" element={<KanjiDetails key={selected} kanji={selected} onClick={handleSetPlayer} />} />
                     <Route path="/about" element={<About />} />
                 </Routes>

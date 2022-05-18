@@ -1,62 +1,52 @@
 import { useState, useEffect } from 'react';
 
 const Fight = (props) => {
-console.log(props)
-    //Assign battle stats to each kanji based on data
 
+    console.log("Props: ", props)
+    //Assign battle stats to each kanji based on data
     let p1 = props.fighters[0];
     let p2 = props.fighters[1];
+    const [fight, setFight] = useState([])
     const [player1Hp, setPlayer1Hp] = useState();
     const [player2Hp, setPlayer2Hp] = useState()
-    // const [fight, setFight] = useState([]);
-
     p1.attackPower = p1.kanji.strokes.count * 5;
     p2.attackPower = p2.kanji.strokes.count * 5;
-    let gameClock;
     console.log(p1.attackPower, p2.attackPower);
+
+    useEffect(() => {
+        setFight([true])
+          setPlayer1Hp(p1.kanji.strokes.count * p1.radical.strokes + 200);
+          setPlayer2Hp(p2.kanji.strokes.count * p2.radical.strokes + 200);
+      }, [])
+    
+    const handleWin = () => {
+        console.log("Win");
+    }
     
     const handleBattle = () => {
-        console.log("here");
+        console.log("round 1")
         let round = 1
-        let rngAttack;
-        let p1HpCopy;
-        let p2HpCopy;
-        gameClock = setInterval(() => {
-            if (round === 1) {
-                console.log(p1.kanji.strokes.count * p1.radical.strokes + 2000)
-                console.log(p2.kanji.strokes.count * p2.radical.strokes + 2000)
-                setPlayer1Hp(p1.kanji.strokes.count * p1.radical.strokes + 2000);
-                setPlayer2Hp(p2.kanji.strokes.count * p2.radical.strokes + 2000);
-                p1HpCopy = player1Hp;
-                p2HpCopy = player2Hp;
-            }
-            console.log("HP status:", p1HpCopy, p2HpCopy)
-            if (player1Hp > 0 && player2Hp > 0) {
-                switch (round % 2 === 0) {
-                    case true :
-                        rngAttack = Math.floor(Math.random() * p1.attackPower);
-                        p2HpCopy -= rngAttack;
-                        setPlayer2Hp(p2HpCopy);
-                        console.log(`p1 attacks for: ${rngAttack} damage!`, player2Hp);
-                        break;
-                    case false :
-                        rngAttack = Math.floor(Math.random() * p2.attackPower);
-                        p1HpCopy -= rngAttack;
-                        setPlayer1Hp(p1HpCopy);
-                        console.log(`p2 attacks for: ${rngAttack} damage!`, player1Hp);
-                        break;
-                }
-                round++;
-                console.log(round)
+        console.log(player1Hp, player2Hp)
+        let p1HpCopy = player1Hp;
+        let p2HpCopy = player2Hp;
+        let interval = setInterval(() => {
+          if (p1HpCopy > 0 && p2HpCopy > 0) {
+            const rngAttack = Math.floor(Math.random() * p1.attackPower)
+            round % 2 === 0 ? p1HpCopy -= rngAttack : p2HpCopy -= rngAttack;
+            p1HpCopy < 0 ? setPlayer1Hp(0) : setPlayer1Hp(p1HpCopy);
+            p2HpCopy < 0 ? setPlayer2Hp(0) : setPlayer2Hp(p2HpCopy);
+            round++
             } else {
-                clearInterval(gameClock);
-                // player1Hp <= 0 ? setPlayer1Hp(0) : setPlayer2Hp(0)
+                clearInterval(interval);
+                if (p1HpCopy === 0) {
+                    handleWin(1);
+                } else {
+                    handleWin(2);
+                }
             }
-        }, 3000)
+        }, 1000);
     }
 
-    // setTimeout(handleBattle, 3000)
-     
     return (
         <div className="Dojo">
             <header className="battleStats">
