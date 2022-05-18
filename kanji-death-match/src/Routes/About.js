@@ -3,7 +3,7 @@ import { Routes, Route, Link} from "react-router-dom";
 
 const About = () => {
     return (
-        <div className="about">
+        <div className="About">
             <h1 style={{color: "red", fontSize: "3em"}}>About Kanji Deathmatch:</h1>
             <h2>This app is Adrian's second project for the General Assembly
                  Software Engineering Immersive program. Kanji Deathmatch is the

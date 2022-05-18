@@ -1,9 +1,12 @@
 import {useState} from 'react';
+import Header from '../Components/Header';
 
-const Fight = () => {
+const Fight = (props) => {
     
     return(
-        console.log("fight")
+       <div className="dojo">
+           <Header />
+       </div>
     )
 }
 

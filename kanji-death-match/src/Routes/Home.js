@@ -3,6 +3,7 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import KanjiCard from '../Components/KanjiCard';
 import KanjiDetails from '../Components/KanjiDetails';
 import About from './About';
+import Header from '../Components/Header';
 import FightButton from '../Components/FightButton';
 import Fight from './Fight';
 
@@ -84,22 +85,22 @@ const Home = () => {
         // <Link to="/fight" />)
     }
 
-    const fIgHt = () => {
-        let fightReady = document.getElementsByClassName("fight-button");
-        console.log("fight ready? ", fightReady[0], player1, player2)
-        if (player1.kanji && player2.kanji && !fightReady[0]) {
-           let message = document.getElementsByClassName("game-message")[0];
-           message.firstChild.after(<FightButton/>);
-           console.log(message);
-        }
-    }
+    // const fIgHt = () => {
+    //     let fightReady = document.getElementsByClassName("fight-button");
+    //     console.log("fight ready? ", fightReady[0], player1, player2)
+    //     if (player1.kanji && player2.kanji && !fightReady[0]) {
+    //        let message = document.getElementsByClassName("game-message")[0];
+    //        message.firstChild.after(<FightButton/>);
+    //        console.log(message);
+    //     }
+    // }
     
     const handleSetPlayer= (e) => {
         let playerNumber = parseInt(e.target.className.slice(7));
         playerNumber === 1 ? setPlayer1(selected[0]) : setPlayer2(selected[0]);
         console.log("players after add ", player1, player2)
     }
-    useEffect(fIgHt, [player1, player2])
+    // useEffect(fIgHt, [player1, player2])
 
     
     let kanjiCards = kanji.map((symbol, index) => {
@@ -116,11 +117,7 @@ const Home = () => {
 
     return (
         <div className="Home">
-            <header>
-                <Link to="/"><h1>KDM</h1></Link>
-                <Link to="/about"><p>About</p></Link>
-                <Link to="/home" onClick={() => setKanji([])}><p>Home</p></Link>
-            </header>
+            <Header onClick={() => setKanji([])}/>
             <main className="main-display">
                 <div className="greeting">
                     <h3>
