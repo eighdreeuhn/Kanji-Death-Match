@@ -25,6 +25,8 @@
 }
 
 .Dojo {
+    display: grid;
+    grid-template: auto 600px / 200px 1fr 1fr 1fr 200px;
     background-image: url("../Dojo Background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -34,6 +36,7 @@
 
 .battleStats {
     display: flex;
+    grid-area: 1 / 1 / 2 / 6;
     justify-content: space-around;
     height: 5em;
     background-color: black;
