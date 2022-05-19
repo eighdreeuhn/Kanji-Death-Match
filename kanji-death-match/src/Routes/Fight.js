@@ -20,6 +20,7 @@ const Fight = (props) => {
       }, [])
     //Executes when one fighter's hp reaches 0
     const handleWin = (winner) => {
+        console.log(winner)
         const kanji1 = document.getElementsByClassName("kanji-1")[0];
         const kanji2 = document.getElementsByClassName("kanji-2")[0];
         switch (winner) {
@@ -49,35 +50,42 @@ const Fight = (props) => {
             kanji2.className = "kanji-2";
             switch (round % 2 === 0) {
                 case true :
-                    p2HpCopy -= rngAttack;
-                    kanji1.classList.toggle("attack")
-                    kanji2.classList.toggle("defend")
-                    break;
-                case false :
                     p1HpCopy -= rngAttack;
                     kanji2.classList.toggle("attack")
                     kanji1.classList.toggle("defend")
+                    break;
+                case false :
+                    p2HpCopy -= rngAttack;
+                    kanji1.classList.toggle("attack")
+                    kanji2.classList.toggle("defend")
                     break;
             }
             p1HpCopy < 0 ? setPlayer1Hp(0) : setPlayer1Hp(p1HpCopy);
             p2HpCopy < 0 ? setPlayer2Hp(0) : setPlayer2Hp(p2HpCopy);
             round++
             } else {
+                console.log(p1HpCopy, p2HpCopy)
                 clearInterval(interval);
-                if (p1HpCopy === 0) {
+                if (p1HpCopy > 0) {
                     handleWin(1);
                 } else {
                     handleWin(2);
                 }
             }
-        }, 3000);
+        }, 1000);
+    }
+
+    window.onload = () => {
+        const counter = document.getElementsByClassName("countdown")[0];
+        console.log(counter)
+        setTimeout(handleBattle, 3000);
     }
 
     return (
         <div className="Dojo">
             <header className="battleStats">
                 <div className="player-1-hp"><h1>{player1Hp}</h1></div>
-                <button className="start" onClick={() => setTimeout(handleBattle, 1000)}>FIGHT!!!</button>
+                <div className="countdown">Click to Begin</div>
                 <div className="player-2-hp"><h1>{player2Hp}</h1></div>
             </header>
             <section className="stage">

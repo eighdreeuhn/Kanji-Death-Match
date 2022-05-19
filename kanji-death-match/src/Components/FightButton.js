@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom';
 
-const FightButton = (props) => {
-    console.log(props)
+const FightButton = () => {
     return(
-        // <Link to="/fight">
             <button className="fight-button">FIGHT!!!</button>
-        // </Link>
     )
 }
 

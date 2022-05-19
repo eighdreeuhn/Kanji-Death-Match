@@ -1,16 +1,80 @@
+@keyframes zoom-in {
+    0% {
+        transform: scale(100%)
+    }
+
+    10% {
+        transform: scale(80%)
+    }
+
+    100% {
+        transform: scale(150%);
+    }
+}
+
+.zoom-in {
+    animation: zoom-in 500ms ease;
+    transform: scale(150%);
+    /* transform: translateX(10%); */
+    font-weight: bold;
+}
+
+@keyframes zoom-out {
+    0% {
+        transform: scale(150%)
+    }
+
+    100% {
+        transform: scale(100%)
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0%
+    }
+
+    90% {
+        opacity: 0%
+    }
+
+    95% {
+        opacity: 90%
+    }
+
+    100% {
+        opacity: 100%
+    }
+}
+
 .App {
     background-color: black;
-    min-height: 800px;
+    min-height: 100%;
 }
 
 .footer {
     background-color: black;
     color: white;
     font-size: .75em;
+    height: 3em;
 }
 
+.Intro-overlay {
+    background: url("/wasteland-wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 800px;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 20%;
+}
+
+.Intro-overlay a {
+    color: white;
+}
 .Home {
-    background-image: url("/j-lee-LYBSBjGo-5s-unsplash.jpg");
+    background-image: url("wasteland-wallpaper.jpg");
     background-size: contain;
     min-height: 1000px;
     animation: appear 500ms linear;
@@ -49,26 +113,6 @@
     color: red;
 }
 
-
-
-@keyframes appear {
-    0% {
-        opacity: 0%
-    }
-
-    90% {
-        opacity: 0%
-    }
-
-    95% {
-        opacity: 90%
-    }
-
-    100% {
-        opacity: 100%
-    }
-}
-
 .intro-1 {
     animation: appear 1s linear;
 }
@@ -86,16 +130,6 @@
     animation: appear 3s linear;
 }
 
-.intro-overlay {
-    background: url("/wasteland-wallpaper.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 500px;
-    color: white;
-    text-align: center;
-    font-size: 1.75em;
-    padding-top: 20%;
-}
 
 .hidden {
     display: none;
@@ -121,17 +155,24 @@ nav {
     list-style: none;
 }
 
-.greeting {
-    margin: 0 10%;
-}
 
 .main-display {
     display: grid;
-    grid-template-rows: 2fr auto;
+    grid-template-rows: 1fr auto auto auto ;
+    grid-template-columns: 1fr 3fr;
+}
+
+.greeting {
+    grid-row: 1;
+    grid-column: 1 / 3;
+    margin: 0 10%;
+    height: auto;
 }
 
 .search-form {
     display: flex;
+    grid-row: 2;
+    grid-column: 1 / 3;
     justify-content: space-evenly;
     opacity: 75%;
     width: 100%;
@@ -140,28 +181,49 @@ nav {
 
 .game-message {
     display: flex;
-    justify-content: space-evenly;
+    grid-row: 3;
+    grid-column: 1 / 3;
+    justify-content:space-evenly;
     width: 100%px;
-    margin-left: 20px;
+    margin: 0 25%;
     text-align: center;
 }
 
 .kanji-card-display {
-    display: inline-block;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-row: 4;
+    grid-column: 1 / 4;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .kanji-card {
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    grid-column: 1;
+    padding-left: 5%;
+    /* text-align: center; */
     color: black;
-    border: 2px solid black;
     font-size: 60px;
-    background-color: blanchedalmond;
-    margin: 5% 5% 5% 20%;
+    background: url("/old_paper_stock_02_by_ftourini_d48ubt0.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 5% 5% 5% 30%;
     height: 100px;
     width: 90px;
     cursor: pointer;
+}
+
+.kanji-details {
+    display: flexbox;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 2;
+    grid-row: 4;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    background-color: blanchedalmond;
+    border: 2px solid black;
+    margin: 3% 10% 10% 10%;
 }
 
 a {
@@ -183,7 +245,6 @@ a {
 
 @keyframes defend {
     0% {transform: scale(100%)}
-    25% {transform: scale(25%)}
     50% {transform: scale(50%)}
     75% {transform: scale(25%)}
     100% {transform: scale()100%}
@@ -195,20 +256,22 @@ a {
 }
 
 @keyframes winner {
-    0% {}
-    100% {}
+    0% {transform: scale(100%)}
+    100% {transform: scale(150%)}
 }
 
 .winner {
+    transform: scale(150%);
     animation: winner 1s ease;
 }
 
 @keyframes loser {
-    0% {}
-    100% {}
+    0% {transform: scale(100%)}
+    100% {transform: scale(10%)}
 }
 
 .loser {
+    transform: scale(10%);
     animation: loser 1s ease;
 }
 
@@ -222,16 +285,6 @@ a {
     grid-area: 3 / 3 / 4 / 4;
 }
 
-.kanji-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    text-align: center;
-    height: auto;
-    background-color: blanchedalmond;
-    border: 2px solid black;
-    margin: 3% 10% 10% 10%;
-}
 
 .kanji-details .button-1 {
     margin: 5%;
@@ -243,44 +296,40 @@ a {
     background-color: rgb(239, 238, 138);
 }
 
+.kanji-details audio, .kanji-details video {
+    grid-column: 2 / 3;
+}
+
+.kanji-details video {
+    size: 80%;
+    margin: 10%;
+}
+
 .fight-button {
     background-color: red;
+    font-size: 3em;
+}
+
+.countdown {
+    background-color: white;
     font-size: 1.5em;
-    margin: .5em 0;
-}
-
-@keyframes zoom-in {
-    0% {
-        transform: scale(100%)
-    }
-
-    10% {
-        transform: scale(80%)
-    }
-
-    100% {
-        transform: scale(150%)
-    }
-}
-
-.zoom-in {
-    animation: zoom-in 500ms ease;
-    transform: scale(150%);
-    font-weight: bold;
-}
-
-@keyframes zoom-out {
-    0% {
-        transform: scale(150%)
-    }
-
-    100% {
-        transform: scale(100%)
-    }
+    width: 5em;
 }
 
 .zoom-out {
     animation: zoom-out 500ms ease;
     transform: scale(100%);
     font-weight: normal;
+}
+
+/* Media queries */
+
+@media screen and (min-width: 460px) {
+    .Intro-overlay {
+        font-size: 2em;
+    }
+}
+
+@media scree and (min-width: 750px) {
+
 }

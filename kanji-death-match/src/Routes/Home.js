@@ -98,7 +98,7 @@ const Home = () => {
         playerNumber === 1 ? setPlayer1(selected[0]) : setPlayer2(selected[0]);
         console.log("players after add ", player1, player2)
     }
-    
+
     let kanjiCards = kanji.map((symbol, index) => {
         if (kanji[0]) {
             return (
@@ -145,6 +145,9 @@ const Home = () => {
                     <Route path="/about" element={<About />} />
                 </Routes>
             </main>
+            <audio autoPlay className="intro-audio">
+                <source src="./Detroit_People_Mover.mp3" type="audio/mp3"/>
+            </audio>
         </div>
     )
 }
