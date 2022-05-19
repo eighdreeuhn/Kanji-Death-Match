@@ -341,10 +341,29 @@ a {
 
 }
 
+@keyframes hitsplat {
+    0% {
+        transform: scale(200%)
+    }
+    
+    10% {
+        transform: scale(100%)
+    }
+    
+    100% {
+        transform: scale(0%);
+    }
+}
+
+.hit {
+    animation: hitsplat 1000ms ease;
+}
+
 .kanji-1-display {
     grid-area: 2 / 2 / 3 / 3;
     text-align: center;
     font-size: 2em;
+    font-weight: bold;
     color: red;
 }
 
@@ -352,8 +371,10 @@ a {
     grid-area: 2 / 3 / 3 / 4;
     text-align: center;
     font-size: 2em;
+    font-weight: bold;
     color: red;
 }
+
 
 
 /* Media queries */

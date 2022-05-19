@@ -33,18 +33,19 @@ const Home = () => {
     const secondFetch = (characters) => {
         console.log(characters);
         let kanjiCopy = [...kanji];
-        characters.forEach(entry => {
-            fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${entry}`, options)
+        Promise.all(characters.map(entry => {
+            return fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${entry}`, options)
                 .then(res => res.json())
                 .then(data => {
                     kanjiCopy.push(data);
                 })
-        })
-        setKanji(kanjiCopy);
+            })).then(() => {
+                setKanji(kanjiCopy);
+            })
         setSearchInfo("");
         console.log(kanjiCopy)
     }
-
+console.log(kanji)
     const handleSubmit = (e) => {
         e.preventDefault();
         let kanjiContainer = []
@@ -53,13 +54,13 @@ const Home = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                //change to component
                 const status = document.getElementsByClassName("status")[0];
                 data.length === 0 ? status.innerText = "No such kanji..." : status.innerText = "Kanji located!"
                 console.log(status)
                 data.forEach((entry) => {
                     kanjiContainer.push(entry.kanji.character)
                 });
-                setSearchInfo("")
                 secondFetch(kanjiContainer);
             })
             .catch(err => console.error(err));
@@ -116,7 +117,7 @@ const Home = () => {
             )
         } else {
             return (
-                <KanjiCard key={index} >{}loading...</KanjiCard>
+                <KanjiCard key={index} >loading...</KanjiCard>
             )
         }
     })

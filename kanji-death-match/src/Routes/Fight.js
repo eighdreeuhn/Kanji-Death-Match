@@ -54,14 +54,26 @@ const Fight = (props) => {
                     p1HpCopy -= rngAttack;
                     kanji2.classList.toggle("attack")
                     kanji1.classList.toggle("defend")
-                    document.getElementsByClassName("kanji-1-display")[0].innerText = rngAttack;
+                    if (rngAttack === 0) {
+                        document.getElementsByClassName("kanji-1-display")[0].innerText = "Miss!"
+                    } else {
+                        document.getElementsByClassName("kanji-1-display")[0].classList.toggle("hit")
+                        setTimeout(() => document.getElementsByClassName("kanji-1-display")[0].classList.toggle("hit"), 250);
+                        document.getElementsByClassName("kanji-1-display")[0].innerText = rngAttack;
+                    }
                     document.getElementsByClassName("kanji-2-display")[0].innerText = "";
                     break;
                 case false :
                     p2HpCopy -= rngAttack;
                     kanji1.classList.toggle("attack")
                     kanji2.classList.toggle("defend")
-                    document.getElementsByClassName("kanji-2-display")[0].innerText = rngAttack;
+                    if (rngAttack === 0) {
+                        document.getElementsByClassName("kanji-2-display")[0].innerText = "Miss!"
+                    } else {
+                        document.getElementsByClassName("kanji-2-display")[0].classList.toggle("hit")
+                        setTimeout(() => document.getElementsByClassName("kanji-1-display")[0].classList.toggle("hit"), 250);
+                        document.getElementsByClassName("kanji-2-display")[0].innerText = rngAttack;
+                    }
                     document.getElementsByClassName("kanji-1-display")[0].innerText = "";
                     break;
             }
@@ -79,7 +91,7 @@ const Fight = (props) => {
                     handleWin(2);
                 }
             }
-        }, 1000);
+        }, 2000);
     }
 
     const battleStart= () => {
