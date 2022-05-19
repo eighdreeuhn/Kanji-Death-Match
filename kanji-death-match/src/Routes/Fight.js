@@ -54,11 +54,15 @@ const Fight = (props) => {
                     p1HpCopy -= rngAttack;
                     kanji2.classList.toggle("attack")
                     kanji1.classList.toggle("defend")
+                    document.getElementsByClassName("kanji-1-display")[0].innerText = rngAttack;
+                    document.getElementsByClassName("kanji-2-display")[0].innerText = "";
                     break;
                 case false :
                     p2HpCopy -= rngAttack;
                     kanji1.classList.toggle("attack")
                     kanji2.classList.toggle("defend")
+                    document.getElementsByClassName("kanji-2-display")[0].innerText = rngAttack;
+                    document.getElementsByClassName("kanji-1-display")[0].innerText = "";
                     break;
             }
             p1HpCopy < 0 ? setPlayer1Hp(0) : setPlayer1Hp(p1HpCopy);
@@ -67,6 +71,8 @@ const Fight = (props) => {
             } else {
                 console.log(p1HpCopy, p2HpCopy)
                 clearInterval(interval);
+                document.getElementsByClassName("kanji-1-display")[0].innerText = "";
+                document.getElementsByClassName("kanji-2-display")[0].innerText = "";
                 if (p1HpCopy > 0) {
                     handleWin(1);
                 } else {
@@ -89,6 +95,8 @@ const Fight = (props) => {
         }, 1000)
     }
 
+    // props.clearKanji([])
+
     return (
         <div className="Dojo">
             <header className="battleStats">
@@ -97,11 +105,17 @@ const Fight = (props) => {
                 <div className="player-2-hp"><h1>{player2Hp}</h1></div>
             </header>
             <section className="stage">
+                <div className="kanji-1-display">
+
+                </div>
                 <div className="kanji-1">
                     <img src={p1.kanji.video.poster} />
                 </div>
+                <div className="kanji-2-display">
+
+                </div>
                 <div className="kanji-2">
-                    <img src={p2.kanji.video.poster}/>
+                    <img src={p2.kanji.video.poster} alt="kanji"/>
                 </div>
             </section>
         </div>

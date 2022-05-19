@@ -7,6 +7,7 @@ import Header from '../Components/Header';
 import FightButton from '../Components/FightButton';
 import Fight from './Fight';
 
+
 const Home = () => {
 
     const [kanji, setKanji] = useState([]);
@@ -40,6 +41,7 @@ const Home = () => {
                 })
         })
         setKanji(kanjiCopy);
+        setSearchInfo("");
         console.log(kanjiCopy)
     }
 
@@ -108,13 +110,13 @@ const Home = () => {
     console.log(kanji)
 
     let kanjiCards = kanji.map((symbol, index) => {
-        if (kanji[0]) {
+        if (kanji) {
             return (
                 <Link to={`kanji/${symbol.kanji.character}`}><KanjiCard kanji={symbol} index={index} onClick={handleKanjiClick} key={index} /></Link>
             )
         } else {
             return (
-                <div key={index} >loading...</div>
+                <KanjiCard key={index} >{}loading...</KanjiCard>
             )
         }
     })
@@ -155,7 +157,7 @@ const Home = () => {
                 </Routes>
             </main>
             <audio autoPlay className="intro-audio">
-                <source src="./Detroit_People_Mover.mp3" type="audio/mp3" />
+                <source src="../src/Detroit_People_Mover.mp3" type="audio/mp3" />
             </audio>
         </div>
     )

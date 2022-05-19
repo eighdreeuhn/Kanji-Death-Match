@@ -219,7 +219,7 @@ nav {
 }
 
 .kanji-card {
-    display: block;
+    display: flex;
     grid-column: 1;
     padding-left: 8%;
     color: black;
@@ -227,7 +227,7 @@ nav {
     background: url("../old_paper_stock_02_by_ftourini_d48ubt0.png");
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 5% 5% 5% 30%;
+    margin: 10% 5% 25% 40%;
     height: 100px;
     width: 90px;
     cursor: pointer;
@@ -240,7 +240,6 @@ nav {
     grid-row: 4;
     justify-content: center;
     text-align: center;
-    height: auto;
     background-color: rgb(0, 0, 0);
     color: white;
     border: 2px solid black;
@@ -331,12 +330,29 @@ a {
 .fight-button {
     background-color: red;
     font-size: 3em;
+    margin-top: 10px;
 }
 
 .countdown {
     background-color: white;
     font-size: 1.5em;
-    width: 5em;
+    width: 100px;
+    text-align: center;
+
+}
+
+.kanji-1-display {
+    grid-area: 2 / 2 / 3 / 3;
+    text-align: center;
+    font-size: 2em;
+    color: red;
+}
+
+.kanji-2-display {
+    grid-area: 2 / 3 / 3 / 4;
+    text-align: center;
+    font-size: 2em;
+    color: red;
 }
 
 
@@ -346,8 +362,24 @@ a {
     .Intro-overlay {
         font-size: 2em;
     }
+
+   .kanji-card {
+       padding-left: 5%;
+       margin-left: 40%;
+       height: 150px;
+       width: 150px;
+       font-size: 6em;
+   }
+
+    .kanji-details video {
+        size: 200%;
+        /* margin: 5%; */
+    }
 }
 
-@media scree and (min-width: 750px) {
-
+@media screen and (min-width: 750px) {
+    .kanji-card {
+        height: 200px;
+        font-size: 8em;
+    }
 }
