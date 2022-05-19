@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const FightButton = () => {
     return(
-            <button className="fight-button">FIGHT!!!</button>
+            <button className="fight-button status">FIGHT!!!</button>
     )
 }
 

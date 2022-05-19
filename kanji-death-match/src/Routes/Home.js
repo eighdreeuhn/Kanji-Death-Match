@@ -98,6 +98,15 @@ const Home = () => {
         console.log("players after add ", player1, player2)
     }
 
+    const goHome = () => {
+        setKanji([]);
+        setSelected([]);
+        setPlayer1([]);
+        setPlayer2([]);
+    }
+
+    console.log(kanji)
+
     let kanjiCards = kanji.map((symbol, index) => {
         if (kanji[0]) {
             return (
@@ -112,15 +121,16 @@ const Home = () => {
 
     return (
         <div className="Home">
-            <Header onClick={() => setKanji([])} />
+            <Header onClick={goHome} />
             <main className="main-display">
                 <div className="greeting">
+                    <h2>Welcome to Kanji Deathmatch!</h2>
                     <h3>
-                        Welcome to Kanji Deathmatch!
                         Enter an English word to get a kanji.
                         Once you have selected your fighters,
                         enter the arena and watch them fight!
-                    </h3></div>
+                    </h3>
+                </div>
                 <div className="search-form">
                     <label>
                         {kanji.length < 10 ? `Build your Kanji Army!` : `Time to fight!`}
@@ -145,7 +155,7 @@ const Home = () => {
                 </Routes>
             </main>
             <audio autoPlay className="intro-audio">
-                <source src="./Detroit_People_Mover.mp3" type="audio/mp3"/>
+                <source src="./Detroit_People_Mover.mp3" type="audio/mp3" />
             </audio>
         </div>
     )
