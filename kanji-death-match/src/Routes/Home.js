@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import KanjiCard from '../Components/KanjiCard';
 import KanjiDetails from '../Components/KanjiDetails';
 import About from './About';
 import Header from '../Components/Header';
-import Search from './Search';
 import FightButton from '../Components/FightButton';
 import Fight from './Fight';
 

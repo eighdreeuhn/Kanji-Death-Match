@@ -18,6 +18,7 @@ const Fight = (props) => {
           setPlayer1Hp(p1.kanji.strokes.count * p1.radical.strokes + 200);
           setPlayer2Hp(p2.kanji.strokes.count * p2.radical.strokes + 200);
       }, [])
+      
     //Executes when one fighter's hp reaches 0
     const handleWin = (winner) => {
         console.log(winner)
@@ -75,17 +76,24 @@ const Fight = (props) => {
         }, 1000);
     }
 
-    window.onload = () => {
-        const counter = document.getElementsByClassName("countdown")[0];
-        console.log(counter)
-        setTimeout(handleBattle, 3000);
+    const battleStart= () => {
+        let i = 4;
+        setTimeout(handleBattle, 5000);
+        let timer = setInterval(() => {
+            const counter = document.getElementsByClassName("countdown")[0];
+            i === 4 ? counter.innerText = "Ready?" : 
+            i > 0 ? counter.innerText = i : 
+            i === 0 ? counter.innerText = "Fight!!!" :
+            clearInterval(timer);
+            i--
+        }, 1000)
     }
 
     return (
         <div className="Dojo">
             <header className="battleStats">
                 <div className="player-1-hp"><h1>{player1Hp}</h1></div>
-                <div className="countdown">Click to Begin</div>
+                <div className="countdown" onClick={battleStart}>Click to Begin</div>
                 <div className="player-2-hp"><h1>{player2Hp}</h1></div>
             </header>
             <section className="stage">
