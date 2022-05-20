@@ -10,7 +10,7 @@ const root = createRoot(container);
 
 root.render(
 
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <App/>
   </Router>,)
 
