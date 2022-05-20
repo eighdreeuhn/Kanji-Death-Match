@@ -168,7 +168,6 @@ header {
     display: flex;
     justify-content: space-around;
     background-color: black;
-    opacity: 75%;
     color: white;
     margin: 0 2%;
 }
@@ -176,7 +175,7 @@ header {
 header a {
     text-decoration: none;
     opacity: 100%;
-    color: white;
+    color: rgb(171, 10, 10);
 }
 
 nav {
