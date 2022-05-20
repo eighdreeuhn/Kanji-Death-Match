@@ -6,7 +6,6 @@ import About from './About';
 import Header from '../Components/Header';
 import FightButton from '../Components/FightButton';
 import Fight from './Fight';
-import HomeAudio from '../Components/HomeAudio';
 
 
 const Home = () => {
@@ -115,10 +114,6 @@ const Home = () => {
         }
     })
 
-    const playHomeMusic = () => {
-        <HomeAudio />.play()
-    }
-
     return (
         <div className="Home">
             <Header onClick={goHome} />
@@ -148,7 +143,6 @@ const Home = () => {
                 <div className="kanjiCardDisplay">
                     {kanjiCards}
                 </div>
-                <HomeAudio play={playHomeMusic} />
                 <Routes>
                     <Route path="/:fight" element={<Fight clearKanji={setKanji} fighters={[player1, player2]} />} />
                     <Route path="/kanji/:kanji" element={<KanjiDetails key={selected} kanji={selected} onClick={handleSetPlayer} />} />

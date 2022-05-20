@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Dpm from ".//Detroit_People_Mover.mp3"
+import sensei_21145 from "./sensei_21145.mp3"
 
 const Intro = () => {
 
@@ -16,7 +16,7 @@ const Intro = () => {
             <h1 className="intro-3">漢字のデスマッチ</h1>
             <Link onMouseOver={buttonHover} to="/home"><button className="intro-4">begin</button></Link>
             <audio loop className="intro-audio">
-                <source src={Dpm} type="audio/mpeg" />
+                <source src={sensei_21145} type="audio/mpeg" />
             </audio>
         </div>
     )

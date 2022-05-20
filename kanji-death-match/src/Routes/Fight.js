@@ -16,8 +16,8 @@ const Fight = (props) => {
 
     useEffect(() => {
         setFight([true])
-        setPlayer1Hp(p1.kanji.strokes.count ** p1.radical.strokes);
-        setPlayer2Hp(p2.kanji.strokes.count ** p2.radical.strokes);
+        setPlayer1Hp(p1.kanji.strokes.count ** 2 * p1.radical.strokes);
+        setPlayer2Hp(p2.kanji.strokes.count ** 2 * p2.radical.strokes);
     }, [])
 
     //Executes when one fighter's hp reaches 0
