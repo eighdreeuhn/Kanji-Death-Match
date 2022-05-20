@@ -6,6 +6,7 @@ import About from './About';
 import Header from '../Components/Header';
 import FightButton from '../Components/FightButton';
 import Fight from './Fight';
+import HomeAudio from '../Components/HomeAudio';
 
 
 const Home = () => {
@@ -31,7 +32,6 @@ const Home = () => {
     //second call takes the kanji info from the first call and gets the
     //detailed info on the kanji
     const secondFetch = (characters) => {
-        console.log(characters);
         let kanjiCopy = [...kanji];
         Promise.all(characters.map(entry => {
             return fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${entry}`, options)
@@ -39,13 +39,11 @@ const Home = () => {
                 .then(data => {
                     kanjiCopy.push(data);
                 })
-            })).then(() => {
-                setKanji(kanjiCopy);
-            })
+        })).then(() => {
+            setKanji(kanjiCopy);
+        })
         setSearchInfo("");
-        console.log(kanjiCopy)
     }
-console.log(kanji)
     const handleSubmit = (e) => {
         e.preventDefault();
         let kanjiContainer = []
@@ -57,7 +55,6 @@ console.log(kanji)
                 //change to component
                 const status = document.getElementsByClassName("status")[0];
                 data.length === 0 ? status.innerText = "No such kanji..." : status.innerText = "Kanji located!"
-                console.log(status)
                 data.forEach((entry) => {
                     kanjiContainer.push(entry.kanji.character)
                 });
@@ -70,9 +67,7 @@ console.log(kanji)
         let kanjiLink = e.target.parentNode;
         let video = document.getElementsByClassName("strokeVideo");
         let audio = document.getElementsByClassName("kanjiAudio");
-        console.log(!e.target.classList.contains("zoom-in"), video[0], audio[0])
         if (!e.target.classList.contains("zoom-in") && audio[0] && video[0]) {
-            console.log(e.target.classList.contains("zoom-in"), e.target.parentNode.href, video[0], audio[0])
             video[0].load();
             audio[0].load();
             kanjiLink.href = "/home";
@@ -93,12 +88,10 @@ console.log(kanji)
         }
         e.target.classList.toggle("zoom-in");
     }
-    console.log("selected", selected)
 
     const handleSetPlayer = (e) => {
         let playerNumber = parseInt(e.target.className.slice(7));
         playerNumber === 1 ? setPlayer1(selected[0]) : setPlayer2(selected[0]);
-        console.log("players after add ", player1, player2)
     }
 
     const goHome = () => {
@@ -121,6 +114,10 @@ console.log(kanji)
             )
         }
     })
+
+    const playHomeMusic = () => {
+        <HomeAudio />.play()
+    }
 
     return (
         <div className="Home">
@@ -151,15 +148,13 @@ console.log(kanji)
                 <div className="kanjiCardDisplay">
                     {kanjiCards}
                 </div>
+                <HomeAudio play={playHomeMusic} />
                 <Routes>
                     <Route path="/:fight" element={<Fight clearKanji={setKanji} fighters={[player1, player2]} />} />
                     <Route path="/kanji/:kanji" element={<KanjiDetails key={selected} kanji={selected} onClick={handleSetPlayer} />} />
                     <Route path="/about" element={<About />} />
                 </Routes>
             </main>
-            <audio autoPlay className="intro-audio">
-                <source src="../src/Detroit_People_Mover.mp3" type="audio/mp3" />
-            </audio>
         </div>
     )
 }
