@@ -105,10 +105,10 @@
 
 .Dojo {
     display: grid;
-    grid-template: auto 200px 2fr 1fr/ 80px 1fr 1fr 80px;
+    grid-template: auto 200px 1fr 1fr/ 1fr 1fr ;
     grid-row: 5;
     grid-column: 1 / 3;
-    background-image: url("../abstract-1653015236640-4785.jpg");
+    background-image: url("../Dojo Background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border: 2px solid black;
@@ -119,7 +119,7 @@
 
 .stage {
     display: grid;
-    grid-area: 2 / 1 / 5 / 5;
+    grid-area: 2 / 1 / 5 / 4;
 }
 
 .stage img {
