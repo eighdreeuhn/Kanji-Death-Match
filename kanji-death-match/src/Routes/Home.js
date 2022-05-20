@@ -50,7 +50,6 @@ const Home = () => {
         fetch(`https://kanjialive-api.p.rapidapi.com/api/public/search/advanced/?kem=${searchInfo}`, options)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 //change to component
                 const status = document.getElementsByClassName("status")[0];
                 data.length === 0 ? status.innerText = "No such kanji..." : status.innerText = "Kanji located!"
@@ -99,8 +98,6 @@ const Home = () => {
         setPlayer1([]);
         setPlayer2([]);
     }
-
-    console.log(kanji)
 
     let kanjiCards = kanji.map((symbol, index) => {
         if (kanji) {

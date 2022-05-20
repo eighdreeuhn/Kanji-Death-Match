@@ -7,7 +7,6 @@ const Fight = (props) => {
     //Assign battle stats to each kanji based on data
     let p1 = props.fighters[0];
     let p2 = props.fighters[1];
-    console.log(p1)
     const [fight, setFight] = useState([])
     const [player1Hp, setPlayer1Hp] = useState();
     const [player2Hp, setPlayer2Hp] = useState()
@@ -41,11 +40,9 @@ const Fight = (props) => {
     }
 
     const handleBattle = () => {
-        console.log("round 1")
         const kanji1 = document.getElementsByClassName("kanji-1")[0];
         const kanji2 = document.getElementsByClassName("kanji-2")[0];
         let round = 1
-        console.log(kanji1, kanji2)
         let p1HpCopy = player1Hp;
         let p2HpCopy = player2Hp;
         let interval = setInterval(() => {
@@ -86,7 +83,6 @@ const Fight = (props) => {
                 round++
                 document.getElementsByClassName("fight-audio")[0].play()
             } else {
-                console.log(p1HpCopy, p2HpCopy)
                 clearInterval(interval);
                 document.getElementsByClassName("kanji-1-display")[0].innerText = "";
                 document.getElementsByClassName("kanji-2-display")[0].innerText = "";
