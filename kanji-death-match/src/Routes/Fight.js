@@ -108,8 +108,6 @@ const Fight = (props) => {
         }, 1000)
     }
 
-    // props.clearKanji([])
-
     return (
         <div className="Dojo">
             <header className="battleStats">
