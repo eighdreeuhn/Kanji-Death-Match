@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactDOM as Router } from "react-dom";
+import { ReactDOM as Router } from "react-router";
 import { createRoot } from 'react-dom/client'
 import './index.css';
 import App from './App';
@@ -9,7 +9,7 @@ const root = createRoot(container);
 
 root.render(
 
-  <HashRouter>
+  <Router>
     <App/>
-  </HashRouter>)
+  </Router>)
 
