@@ -9,7 +9,7 @@ The project marries two of my favorite things into one App: language aquisition,
 This project has two major elements: getting user input, fetching the correct kanji from the API, and displaying all of the relevant detailed information from a second API call for information when clicked/selected. The second major piece is the fight sequence, which will be either a series of user clicks to advance the action, or a set-Interval quto-play. I'm unsure which it will be at this point, but the basic flow is the same for both.
 
 ### API
-I'm  using Kanji Alive! The API has two search endpoints, so it was necessary to make two fetch calls to get the detailed info on each kanji.
+I'm  using Kanji Alive! The API has three search endpoints, a basic, an advanced, and a details, so it was necessary to make two fetch calls to get the detailed info on each kanji. This created an interesting problem with rendering that was ultimately solved by wrapping the second fetch in a Promise.all() and mapping through the array of kanji returned by the first fetch.
 
 
 # Getting Started with Create React App
