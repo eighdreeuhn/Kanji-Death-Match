@@ -16,8 +16,8 @@ function App() {
       <Routes>
         <Route index element={<Intro />} />
         <Route path="/home/*" element={<Home />}/>
-          <Route path=":kanji" element={<KanjiDetails />} />
-          <Route path=":fight" element={<Fight />} />
+        <Route path=":kanji" element={<KanjiDetails />} />
+        <Route path=":fight" element={<Fight />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Error />} />
       </Routes>

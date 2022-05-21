@@ -5,7 +5,8 @@ const Intro = () => {
 
     const buttonHover = (e) => {
         e.target.innerText = "始ろう";
-        document.getElementsByClassName("intro-audio")[0].play()
+        document.getElementsByClassName("intro-audio")[0].volume = 0.5;
+        document.getElementsByClassName("intro-audio")[0].play();
     }
 
     return (
@@ -16,7 +17,7 @@ const Intro = () => {
             <h1 className="intro-3">漢字のデスマッチ</h1>
             <Link onMouseOver={buttonHover} to="/home"><button className="intro-4">begin</button></Link>
             <audio loop className="intro-audio">
-                <source src={sensei_21145} type="audio/mpeg" />
+                <source volume={.2} src={sensei_21145} type="audio/mpeg" />
             </audio>
         </div>
     )

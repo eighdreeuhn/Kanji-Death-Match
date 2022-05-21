@@ -97,6 +97,10 @@
     animation: appear 1s ease;
 }
 
+.About img {
+    width: 20px;
+}
+
 .main-display {
     display: grid;
     grid-template-rows: 1fr auto auto auto auto;
@@ -130,10 +134,11 @@
     display: flex;
     grid-area: 1 / 1 / 2 / 6;
     justify-content: space-around;
+    /* justify-items: center; */
     height: 5em;
     background-color: black;
     opacity: 75%;
-    color: red;
+    color: rgb(168, 0, 0);
 }
 
 .countdown {
@@ -152,7 +157,7 @@
 
 .intro-3 {
     animation: appear 3s linear;
-    color: rgb(171, 10, 10)
+    color: rgb(rgb(168, 0, 0))
 }
 
 .intro-4 {
@@ -175,7 +180,7 @@ header {
 header a {
     text-decoration: none;
     opacity: 100%;
-    color: rgb(171, 10, 10);
+    color: rgb(rgb(168, 0, 0));
 }
 
 nav {
@@ -346,7 +351,7 @@ a {
 
 .kanji-details .button-1 {
     margin: 5%;
-    background-color: rgb(165, 0, 0);
+    background-color: rgb(rgb(168, 0, 0));
 }
 
 .kanji-details .button-2 {
@@ -354,18 +359,8 @@ a {
     background-color: rgb(168, 0, 0);
 }
 
-.kanji-details audio,
-.kanji-details video {
-    grid-column: 2 / 3;
-}
-
-.kanji-details video {
-    size: 80%;
-    margin: 10%;
-}
-
 .fight-button {
-    background-color: red;
+    background-color: rgb(168, 0, 0);
     font-size: 3em;
     margin-top: 10px;
 }
@@ -400,7 +395,7 @@ a {
     text-align: center;
     font-size: 2em;
     font-weight: bold;
-    color: red;
+    color: rgb(168, 0, 0);
 }
 
 .kanji-2-display {
@@ -408,7 +403,7 @@ a {
     text-align: center;
     font-size: 2em;
     font-weight: bold;
-    color: red;
+    color: rgb(168, 0, 0);
 }
 
 
