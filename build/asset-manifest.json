@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.dec105b0.css",
-    "main.js": "/static/js/main.09bfb800.js",
-    "static/media/sensei_21145.mp3": "/static/media/sensei_21145.85d1e376f0508bc68422.mp3",
-    "static/media/old_paper_stock_02_by_ftourini_d48ubt0.png": "/static/media/old_paper_stock_02_by_ftourini_d48ubt0.f51dcf2b304c25fd3d75.png",
-    "static/media/background_concept_comic_wasteland_by_odinservant1_d78tj72.jpg": "/static/media/background_concept_comic_wasteland_by_odinservant1_d78tj72.0c0a90b302373a9aaf89.jpg",
-    "static/media/Dojo Background.jpg": "/static/media/Dojo Background.588578b2a7cf6bcefcdc.jpg",
-    "static/media/excellent.m4a": "/static/media/excellent.a3be38dddbcfc72b97d4.m4a",
-    "static/media/wasteland-wallpaper.jpg": "/static/media/wasteland-wallpaper.66b4d03f0ec4d305f7f2.jpg",
-    "static/media/kdm_hitSplat.m4a": "/static/media/kdm_hitSplat.2a1742f41f070f24d6c5.m4a",
-    "index.html": "/index.html",
-    "main.dec105b0.css.map": "/static/css/main.dec105b0.css.map",
-    "main.09bfb800.js.map": "/static/js/main.09bfb800.js.map"
+    "main.css": "/Kanji-Death-Match/static/css/main.6dbabc63.css",
+    "main.js": "/Kanji-Death-Match/static/js/main.bfaec5a8.js",
+    "static/media/sensei_21145.mp3": "/Kanji-Death-Match/static/media/sensei_21145.85d1e376f0508bc68422.mp3",
+    "static/media/old_paper_stock_02_by_ftourini_d48ubt0.png": "/Kanji-Death-Match/static/media/old_paper_stock_02_by_ftourini_d48ubt0.f51dcf2b304c25fd3d75.png",
+    "static/media/background_concept_comic_wasteland_by_odinservant1_d78tj72.jpg": "/Kanji-Death-Match/static/media/background_concept_comic_wasteland_by_odinservant1_d78tj72.0c0a90b302373a9aaf89.jpg",
+    "static/media/Dojo Background.jpg": "/Kanji-Death-Match/static/media/Dojo Background.588578b2a7cf6bcefcdc.jpg",
+    "static/media/excellent.m4a": "/Kanji-Death-Match/static/media/excellent.a3be38dddbcfc72b97d4.m4a",
+    "static/media/wasteland-wallpaper.jpg": "/Kanji-Death-Match/static/media/wasteland-wallpaper.66b4d03f0ec4d305f7f2.jpg",
+    "static/media/kdm_hitSplat.m4a": "/Kanji-Death-Match/static/media/kdm_hitSplat.2a1742f41f070f24d6c5.m4a",
+    "index.html": "/Kanji-Death-Match/index.html",
+    "main.6dbabc63.css.map": "/Kanji-Death-Match/static/css/main.6dbabc63.css.map",
+    "main.bfaec5a8.js.map": "/Kanji-Death-Match/static/js/main.bfaec5a8.js.map"
   },
   "entrypoints": [
-    "static/css/main.dec105b0.css",
-    "static/js/main.09bfb800.js"
+    "static/css/main.6dbabc63.css",
+    "static/js/main.bfaec5a8.js"
   ]
 }
