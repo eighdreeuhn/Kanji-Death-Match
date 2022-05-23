@@ -19,7 +19,7 @@ const KanjiDetails = (props) => {
                 <audio className="kanjiAudio" autoPlay>
                     <source src={props.kanji[0].examples[rngExampleIndex].audio.mp3} type="audio/mp3" />
                 </audio>
-                <button className="button-1" name={props.kanji[0].kanji.character} onClick={props.onClick}>Set Player 1</button>
+                <button className="button-1" onClick={props.onClick}>Set Player 1</button>
                 <button className="button-2" onClick={props.onClick}>Set Player 2</button>
             </div>
         </section>
